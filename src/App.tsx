@@ -2,6 +2,7 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import { invoke } from "@tauri-apps/api/core";
 import "./App.css";
+import { Button } from '@heroui/react';
 
 function App() {
   const [greetMsg, setGreetMsg] = useState("");
@@ -12,24 +13,18 @@ function App() {
   }
 
   return (
-    <main className="container">
-      <h1>Welcome to Tauri + React</h1>
-
-      <div className="row">
-        <a href="https://vite.dev" target="_blank">
-          <img src="/vite.svg" className="logo vite" alt="Vite logo" />
-        </a>
-        <a href="https://tauri.app" target="_blank">
-          <img src="/tauri.svg" className="logo tauri" alt="Tauri logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <p>Click on the Tauri, Vite, and React logos to learn more.</p>
+    <main className="dark text-foreground bg-background flex h-screen w-screen flex-col items-center justify-center gap-4">
+      
+      <Button
+        color="primary" 
+        variant="shadow" 
+        size="lg"
+      >
+        My Button
+      </Button>
 
       <form
-        className="row"
+        className="flex gap-2 mt-4"
         onSubmit={(e) => {
           e.preventDefault();
           greet();
@@ -39,10 +34,12 @@ function App() {
           id="greet-input"
           onChange={(e) => setName(e.currentTarget.value)}
           placeholder="Enter a name..."
+          className="px-3 py-1.5 rounded-xl border border-zinc-700 bg-zinc-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
-        <button type="submit">Greet</button>
+        <button type="submit" className="px-4 py-1.5 bg-zinc-700 rounded-xl text-white">Greet</button>
       </form>
-      <p>{greetMsg}</p>
+      <p className="text-emerald-400 mt-2">{greetMsg}</p>
+
     </main>
   );
 }
