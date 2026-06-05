@@ -1,44 +1,83 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import { invoke } from "@tauri-apps/api/core";
 import "./App.css";
-import { Button } from '@heroui/react';
+import { Card } from '@heroui/react';
+import { motion } from "framer-motion";
+import GlassBackground from "./components/GlassBackground";
+
+const MotionCard = motion(Card);
 
 function App() {
-  const [greetMsg, setGreetMsg] = useState("");
-  const [name, setName] = useState("");
-
-  async function greet() {
-    setGreetMsg(await invoke("greet", { name }));
-  }
-
   return (
-    <main className="dark text-foreground bg-background flex h-screen w-screen flex-col items-center justify-center gap-4">
+    <main className="dark relative flex h-screen w-screen items-center justify-center p-6 text-foreground select-none">
       
-      <Button
-        color="primary" 
-        variant="shadow" 
-        size="lg"
-      >
-        My Button
-      </Button>
+      <GlassBackground />
 
-      <form
-        className="flex gap-2 mt-4"
-        onSubmit={(e) => {
-          e.preventDefault();
-          greet();
-        }}
+      <MotionCard 
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ type: "spring", stiffness: 100, damping: 22 }}
+        className="max-w-[440px] w-full border border-white/10 bg-black/40 shadow-2xl backdrop-blur-xl p-6 gap-6 rounded-[32px]"
       >
-        <input
-          id="greet-input"
-          onChange={(e) => setName(e.currentTarget.value)}
-          placeholder="Enter a name..."
-          className="px-3 py-1.5 rounded-xl border border-zinc-700 bg-zinc-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-        <button type="submit" className="px-4 py-1.5 bg-zinc-700 rounded-xl text-white">Greet</button>
-      </form>
-      <p className="text-emerald-400 mt-2">{greetMsg}</p>
+        <div className="flex flex-col gap-1 text-center">
+          <h1 className="text-2xl font-bold tracking-tight bg-gradient-to-r from-white via-zinc-200 to-zinc-400 bg-clip-text text-transparent">
+            SonicSound
+          </h1>
+          <p className="text-sm text-zinc-400">
+            Connect your streaming service
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 gap-4 w-full">
+          
+          {/* SoundCloud */}
+          <div className="flex flex-col items-center justify-center gap-3 bg-white/[0.03] hover:bg-white/[0.07] border border-white/5 hover:border-white/10 shadow-lg rounded-2xl p-5 transition-all cursor-pointer group active:scale-95">
+            <div className="flex items-center justify-center">
+              <img 
+                src="/StreamingServices/69ef2abb874551e8c75433a2_Horizontal White (transparent)-download.png" 
+                className="max-h-full max-w-full object-contain"
+                alt="SoundCloud"
+              />
+            </div>
+            <span className="text-xs font-semibold text-zinc-400 group-hover:text-white transition-colors">SoundCloud</span>
+          </div>
+
+          {/* YouTube Music */}
+          <div className="flex flex-col items-center justify-center gap-3 bg-white/[0.03] hover:bg-white/[0.07] border border-white/5 hover:border-white/10 shadow-lg rounded-2xl p-5 transition-all cursor-pointer group active:scale-95">
+            <div className="flex items-center justify-center">
+              <img 
+                src="/StreamingServices/ListenonYouTubeMusic-black-SVG.svg" 
+                alt="YouTube Music"
+              />
+            </div>
+            <span className="text-xs font-semibold text-zinc-400 group-hover:text-white transition-colors">YouTube Music</span>
+          </div>
+
+          {/* Spotify */}
+          <div className="flex flex-col items-center justify-center gap-3 bg-white/[0.03] hover:bg-white/[0.07] border border-white/5 hover:border-white/10 shadow-lg rounded-2xl p-5 transition-all cursor-pointer group active:scale-95">
+            <div className="h-12 w-12 flex items-center justify-center">
+              <img 
+                src="/StreamingServices/Spotify_Primary_Logo_RGB_Green.png" 
+                className="max-h-full max-w-full object-contain"
+                alt="Spotify"
+              />
+            </div>
+            <span className="text-xs font-semibold text-zinc-400 group-hover:text-white transition-colors">Spotify</span>
+          </div>
+
+          {/* Apple Music */}
+          <div className="flex flex-col items-center justify-center gap-3 bg-white/[0.03] hover:bg-white/[0.07] border border-white/5 hover:border-white/10 shadow-lg rounded-2xl p-5 transition-all cursor-pointer group active:scale-95">
+            <div className="h-12 w-12 flex items-center justify-center">
+              <img 
+                src="/StreamingServices/Apple_Music_Icon_wht_sm_073120.svg" 
+                className="max-h-full max-w-full object-contain"
+                alt="Apple Music"
+              />
+            </div>
+            <span className="text-xs font-semibold text-zinc-400 group-hover:text-white transition-colors">Apple Music</span>
+          </div>
+
+        </div>
+      </MotionCard>
 
     </main>
   );
