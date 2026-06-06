@@ -1,17 +1,20 @@
 import { useState } from "react";
 import "./App.css";
+import { motion } from "framer-motion"
 import { Card } from '@heroui/react';
-import { motion } from "framer-motion";
 import GlassBackground from "./components/GlassBackground";
+import {ChevronRight} from '@gravity-ui/icons';
 
 const MotionCard = motion(Card);
 
 function App() {
+
+  
   return (
     <main className="dark relative flex h-screen w-screen items-center justify-center p-6 text-foreground select-none">
       
       <GlassBackground />
-
+      <div className="flex flex-col gap-2">
       <MotionCard 
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -76,8 +79,28 @@ function App() {
             <span className="text-xs font-semibold text-zinc-400 group-hover:text-white transition-colors">Apple Music</span>
           </div>
 
+
         </div>
       </MotionCard>
+
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ 
+          type: "spring", 
+          stiffness: 100, 
+          damping: 22,
+          delay: 0.15
+        }}
+        className="flex flex-col items-center justify-center gap-3 bg-white/[0.03] hover:bg-white/[0.10] border border-white/5 hover:border-white/10 shadow-lg rounded-2xl p-5 transition-all cursor-pointer group active:scale-95 w-full max-w-[440px]"
+      >
+        <h1 className="flex items-center text-zinc-400 group-hover:text-white transition-colors">
+          Continue <ChevronRight className="transition-transform duration-300 group-hover:translate-x-1" />
+        </h1>
+      </motion.div>
+
+
+      </div>
 
     </main>
   );
