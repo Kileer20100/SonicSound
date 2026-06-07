@@ -91,9 +91,9 @@ export function ConnectionMenuPage() {
           damping: 22,
           delay: 0.15
         }}
-        className="flex flex-col items-center justify-center gap-3 bg-white/[0.03] hover:bg-white/[0.10] border border-white/5 hover:border-white/10 shadow-lg rounded-2xl p-5 transition-all cursor-pointer group active:scale-95 w-full max-w-[440px]"
+        className="flex flex-col items-center justify-center gap-3 bg-white/[0.15] hover:bg-white/[0.03] border border-white/5 hover:border-white/10 shadow-lg rounded-2xl p-5 transition-all cursor-pointer group active:scale-95 w-full max-w-[440px]"
       >
-        <h1 className="flex items-center text-zinc-400 group-hover:text-white transition-colors">
+        <h1 className="flex items-centertransition-colors text-white">
           Continue <ChevronRight className="transition-transform duration-300 group-hover:translate-x-1" />
         </h1>
       </motion.div>
