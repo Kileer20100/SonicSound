@@ -4,6 +4,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ConnectionMenuPage } from "./pages/ConnectionMenu/ConnectionMenu";
 import { NotFoundPage } from "./pages/NotFound/NotFound";
 import { invoke } from "@tauri-apps/api/core";
+import { SplashscreenComponent } from "./components/Splashscreen";
+
+
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -26,6 +29,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/splash_page" element={<SplashscreenComponent />} />
         <Route path="/" element={<ConnectionMenuPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

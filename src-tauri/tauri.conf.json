@@ -28,7 +28,7 @@
         "transparent": true,
         "alwaysOnTop": true,
         "center": true,
-        "url": "/splashscreen.html"
+        "url": "/splash_page"
       }
     ],
     "security": {
